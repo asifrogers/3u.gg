@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="A Mnemonic URL Shortener service.">
+    <meta name="keywords" content="URL Shortener, Short URL, Trimmed URL, Short Links, Link Management Platform, Reusable Links">
+    <meta name="robots" content="index,follow">
+    <meta name="channel" content="Mnemonic URL Shortener">
+    <meta name="distribution" content="Global">
+
+    <title>Mnemonic URL Shortener | 3u.gg</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MP63B39G');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/nice-select.css">
+    <link rel="stylesheet" href="./assets/css/owl.min.css">
+    <link rel="stylesheet" href="./assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="./assets/css/flaticon.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="./assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="./assets/css/tiny-slider.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+     <!-- Tooltip.js CSS -->
+    <link href="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.css" rel="stylesheet">
+
+    <!-- Tooltip.js JS -->
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
+
+    <!-- Google tag (gtag.js) --> <script async src="
+    https://www.googletagmanager.com/gtag/js?id=G-WF7MK0BZHC"></script>
+    <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-WF7MK0BZHC'); </script>
+
+        <script type="text/javascript">
+    (function(c, l, a, r, i, t, y) {
+        c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "oeuxbif4cl");
+    </script>
+
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <!-- Google Material Symbols (Icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+<style>
+        .banner-form {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            background: #ffffff;
+            border: none;
+            font-size: 16px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        /* Input field */
+        #editableUrl {
+            flex: 1;
+            height: 100%;
+            padding-right: 40px;
+            font-size: 16px;
+            margin-right: 6px;
+            position: relative;
+        }
+
+        /* Button */
+        #editableUrlBtn {
+            height: 100%;
+            width: 160px;
+            font-family: Kanit, sans-serif;
+            font-size: calc(14px + 0.5vw);
+            background-color: #00abe4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+
+        #editableUrlBtn:focus {
+            outline: none;
+        }
+
+        /* Button hover  */
+        #editableUrlBtn:hover {
+            background: #ffffff !important;
+            /* Change background color on hover */
+            color: #a30132 !important;
+            /* Change text color on hover */
+
+        }
+
+
+        /* Status text */
+        .status-text {
+            position: absolute;
+            top: 50%;
+            /* Vertically center */
+            right: calc(173px + 13px);
+            /* Adjust icon positioning relative to the button */
+            transform: translateY(-50%);
+            font-size: 14px;
+            display: none;
+            /* Hidden by default */
+        }
+
+
+
+        /* Media queries for smaller screens */
+        @media (max-width: 768px) {
+
+            /* Adjust button size for smaller screens */
+            #editableUrlBtn {
+                width: 105px;
+                font-size: calc(12px + 0.5vw);
+                /* Smaller font size for small screens */
+            }
+
+            /* Adjust status text for smaller screens */
+            .status-text {
+                font-size: 14px;
+                /* Adjust font size for smaller screens */
+                right: calc(25px + 95px);
+                /* Ensure correct positioning */
+            }
+        }
+
+        /* Disabled button state */
+        #editableUrlBtn:disabled {
+            background-color: lightgray !important;
+            color: darkgray !important;
+            cursor: not-allowed !important;
+        }
+
+        /* Reset default padding and margin for the section */
+        .banner-section {
+
+            padding-top: 96px;
+        }
+
+        /* Full-width image container */
+        .full-width-image {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            /* Make the container span the full width of the viewport */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            /* Stretch the image to fill the width */
+            height: 450px;
+            /* Height for larger screens */
+            object-fit: cover;
+            /* Cover the container without distortion */
+        }
+
+
+
+        /* Text wrapper positioning */
+        .text-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            transform: translateY(-50%);
+        }
+
+        .left-text,
+        .right-text {
+            width: 40%;
+            color: white;
+            text-align: center;
+        }
+
+        /* Default text size for small screens */
+        .left-text h4,
+        .right-text h4 {
+            font-size: 22px;
+        }
+
+        .left-text p,
+        .right-text p {
+            font-size: 17px;
+        }
+
+        /* Hide Desktop Banner on Small Screens */
+@media (max-width: 430px) {
+    .bg-Gifbanner {
+        display: none !important;
+    }
+    .sm-Gifbanner {
+        display: block !important;
+    }
+}
+
+/* Hide Mobile Banner on Large Screens */
+@media (min-width: 431px) {
+    .sm-Gifbanner {
+        display: none !important;
+    }
+    .bg-Gifbanner {
+        display: block !important;
+    }
+}
+
+/* Fix for Responsive Height */
+@media (max-width: 1199px) {
+    .pricing-box {
+        min-height: 695px !important; /* Adjust height as needed */
+    }
+    .btn-price {
+        bottom: -26px !important;
+    }
+}
+
+        /* Ensure banner height is 400px on small screens */
+        @media (max-width: 768px) {
+            .full-width-image img {
+                height: 300px;
+                /* Height for small screens */
+            }
+        }
+
+        /* Adjust for larger screens */
+
+        @media (min-width: 700px) {
+            .full-width-image img {
+                height: 400px;
+                /* Height for large screens */
+            }
+            .left-text h4,
+            .right-text h4 {
+                font-size: 32px;
+            }
+            .left-text p,
+            .right-text p {
+                font-size: 20px;
+            }
+
+            .banner-title {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 24px;
+            }
+        }
+        @media (max-width: 430px){
+            .bg-Gifbanner{
+                display: none;
+            }
+        }
+        @media (min-width: 431px){
+            .sm-Gifbanner{
+                display: none!important;
+            }
+        }
+
+        @media (max-width: 1199px) {
+    .pricing-box {
+        min-height: 695px !important; /* Adjust height as needed */
+
+        .btn-price {bottom: -26px !important;}
+        
+    }
+}
+
+
+@media (max-width: 991px) {
+    .pricing-box {
+        min-height: 542px !important; /* Adjust height as needed */
+
+        .btn-price {bottom: 5px !important;}
+        
+    }
+}  </style>
+
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="
+https://www.googletagmanager.com/ns.html?id=GTM-MP63B39G"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+    <!--============= ScrollToTop Section Starts Here =============-->
+    <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+    <!--============= ScrollToTop Section Ends Here =============-->
+
+
+    <!--============= Header Section Starts Here =============-->
+    <header class="header-section">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="./assets/images/logo/logo.svg" alt="3u.gg logo">
+                    </a>
+                </div>
+               <ul class="menu">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="use-cases.html">Use Cases</a>
+                    </li>
+
+                     <li>
+                        <a href="branded-messaging.html">Branded Messaging</a>
+                    </li>
+
+                      <li>
+                        <a href="mnemonic-urls.html">Mnemonic URLs</a>
+                    </li>
+                   
+                    <li>
+                        <a href="blog.html" target="_blank">Blog</a>
+                        
+                    </li>
+                    <li class="d-sm-none text-center">
+                        <a href="https://admin.3u.gg/auth"target="_blank" class="header-button active">Login</a>
+                    </li>
+                 
+                </ul>
+                <div class="header-bar d-lg-none mr-sm-3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="header-right">
+                   
+                    <a href="https://admin.3u.gg/auth"target="_blank" class="header-button d-none d-sm-inline-block m-0">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--============= Header Section Ends Here =============-->
+
+
+    <!--============= Banner Section Starts Here =============-->
+     <!--============= Banner Section Starts Here =============-->
+    <section class="banner-section bg-light" id="hero-section">
+    <img src="./assets/images/banner/SmallBanner.gif" alt="Mnemonic URL Shortener" title="Mnemonic URL Shortener" class=" sm-Gifbanner img-fluid " style="width: 100vw !important;"  usemap="#image-map-small"/>
+    </section>
+
+    <section class="" id="hero-section">
+        <div style="width: 100vw !important; ">
+            <img src="./assets/images/banner/BannerGIF.gif" alt="Mnemonic URL Shortener" id="responsive-image" title="Mnemonic URL Shortener" class="bg-Gifbanner img-fluid heightSMscreen" style="width: 100vw !important;" usemap="#image-map" />
+            
+        </div>
+
+       
+      
+
+
+         <map name="image-map-small">
+            <area  alt="Branded Message" title="Branded Message" href="branded-messaging.html" coords="390,1001,737,1106" shape="rect">
+            <area  alt="Mnemonic URLs" title="Mnemonic URLs" href="mnemonic-urls.html" coords="387,2187,740,2292" shape="rect">
+        </map>
+        
+    <map name="image-map">
+        <area  alt="" title="" href="branded-messaging.html" coords="248,400,436,449" shape="rect">
+        <area alt="" title="" href="mnemonic-urls.html" coords="1172,196,1363,249" shape="rect">
+    </map>
+
+
+        <div class="container" id="check-availability-input">
+       
+            <div class="banner-content">
+                <h2 class="banner-title" style="margin-top: 30px;">3u.gg is a mnemonic URL shortener service</h2>
+            </div>
+            <div class="banner-form-group">
+                <h3 class="subtitle" style="font-size: 34px;">Grab URL of Your Choice</h3>
+                <form class="banner-form">
+                    <input type="text" id="editableUrl" value="3u.gg/" name="url" required>
+                    <button type="button" id="editableUrlBtn">Check Availability</button>
+                    <span id="statusText" class="status-text"></span>
+                </form>
+                <div class="banner-text">
+                    <div class="counter-item">
+                        <p style="margin-top: 40px;"><span>You can register your preferred short URL, provided it is available, without any upfront payment. The URL will be held in your account for a specified "hold time," during which you can test it. The hold time is 24 hours for four-character short URLs and one week for URLs with five or more characters.</span></p>
+                        <br>
+                        <p style="text-align: left; margin-left: 5px;"><small>* You can only grab direct links here. Direct links must contain at least 4 characters. Valid characters are alphabets and numbers only.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Banner Section Ends Here =============-->
+    <!--============= Features Starts Here =============-->
+
+    <section id="Feature" class="call-in-action padding-top mt-20 padding-bottom  ">
+        <div class="container ">
+            <div class="section-header mb-low">
+                <h2 class="title mb-0">Features</h2>
+            </div>
+            <!-- First Row -->
+            <div class="row mb-20 mt-20 mb-4">
+                <!-- Image Column -->
+                <div class="col-md-6 mb-4 mt-4">
+                    <img src="./assets/images/how/case-insensitive.png" alt="Case-Insensitive" class="img-fluid">
+                </div>
+                <!-- Text Column -->
+                <div class="col-md-6">
+                    <h3 class="title mt-4 mb-20">Case-Insensitive</h3>
+
+                    <p>3u.gg short URLs are case-insensitive optimized for non-clickable media advertising or typing by hand. <a href="mnemonic-urls.html" style="color:#a30132;"> Read More</a></p>
+                    <p>3u.gg/McDonalds is the same as 3u.gg/MCDONALDS or 3u.gg/mcdonalds. They all point to the same
+                        target URLs. </p>
+                </div>
+            </div>
+            <!-- Second Row -->
+            <div class="row mb-20 mt-20 mb-4">
+
+                <div class="col-md-6">
+                    <h3 class="title mt-4 mb-20 ">Embed Query Parameters for Campaign Tracking</h3>
+                    <p>3u.gg short URLs can embed campaign tracking parameters.</p>
+                    <p>Such parameters (usually called UTM parameters) may be added to the target URLs or kept stored on
+                        the 3u.gg forwarding servers.</p>
+                </div>
+                <div class="col-md-6 mb-4 mt-4">
+                    <img src="./assets/images/how/campaign-tracking-parameters.png" alt="Campaign Tracking Parameters"
+                        class="img-fluid">
+                </div>
+            </div>
+            <!-- Third Row -->
+            <div class="row mb-20 mt-20 mb-4">
+                <!-- Image Column -->
+                <div class="col-md-6 mb-4 mt-4">
+                    <img src="./assets/images/how/editable-url.png" alt="Editable URLs" class="img-fluid">
+                </div>
+                <!-- Text Column -->
+                <div class="col-md-6">
+                    <h3 class="title mt-4 mb-20 ">Editable</h3>
+                    <p>3u.gg short URLs are premium URLs. Owners can reuse them time and again by changing their target
+                        URLs and/or by changing their embedded campaign tracking parameters. </p>
+                </div>
+            </div>
+            <!-- Fourth Row -->
+            <div class="row mb-20 mt-20 mb-4">
+
+                <div class="col-md-6">
+                    <h3 class="title mt-4 mb-20">Choice URLs (if available)</h3>
+                    <p>3u.gg lets you choose the ending (if available). </p>
+                    <p>You can grab your brand name (e.g. 3u.gg/McDonalds) or can choose other single dictionary words
+                        or their combinations.</p>
+                </div>
+                <div class="col-md-6 mb-4 mt-4">
+                    <img src="./assets/images/how/choice-urls.png" alt="Choice URLs" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--============= Feature Section Ends Here =============-->
+    <!--============= How Section Starts Here =============-->
+    <section class="how-section padding-top pt-md-half pb-max-lg-0 section-bg" style="padding-bottom:20px;">
+        <div class="container">
+            <div class="section-header mb-low">
+                <h2 class="title mb-0">How to Start</h2>
+            </div>
+            <div class="row justify-content-center ">
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="./assets/images/how/how1.png" alt="How to Start 3u.gg">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title">Login To Your Account</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="./assets/images/how/how2.png" alt="Login To 3u.gg Account">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title">Grab a Short URL</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="how-item">
+                        <div class="how-thumb">
+                            <img src="./assets/images/how/how3.png" alt="Grab a Short URL">
+                        </div>
+                        <div class="how-content">
+                            <h6 class="title ">Update your Target URL and Tracking Parameters</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-header mb-low col-sm-10" style="margin-top: 30px;">
+            <img src="./assets/images/how/Continuously-Optimize.png" class="img-fluid" alt="Responsive Image">
+            <h6 class="title mb-0 text-uppercase" style="margin-top: 20px;">that’s it! You are all set to optimize
+                continuously</h6>
+        </div>
+    </section>
+    <!--============= How Section Ends Here =============-->
+    <section class="how-section padding-top pt-md-half pb-max-lg-0 bg-light" style="padding-bottom:20px;">
+        <div class="container mt-20 ">
+            <!-- First Row -->
+            <div class="row mb-40 ">
+                <!-- Image Column -->
+                <div class="col-md-6 ">
+                    <img src="./assets/images/how/organization-account.png" alt="Organization Account"
+                        class="img-fluid">
+                </div>
+                <!-- Text Column -->
+                <div class="col-md-6 mb-4">
+                    <h3 class="title mt-4  mb-4 ">Organization Account</h3>
+                    <p>3u.gg organization accounts are a prefix based like 3u.gg/hp/_ _ _ _ or branded like hp.3u.gg/_ _ _ _</p>
+                    <p>Organization can then create short URLs within their exclusive space. All organization URLs have
+                        the same technical features and network as for the individual short URLs.</p>
+                    <p>Organization accounts also have access to 3u.gg GUI and API. The API enables URL shortening to be
+                        embedded in your other workflows.</p>
+                </div>
+            </div>
+            <!-- Second Row -->
+        </div>
+    </section>
+    <!--============= Call In Action Section Starts Here =============-->
+    <section class="section padding-top pt-md-half pb-max-lg-0 mb-40" id="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-box text-center">
+                        <h2 class="title mb-0">Pricing Packages</h2>
+                        <p class=" f-17 mt-3 mb-4">View our pricing for individual and organization accounts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <div class="pricing-box mt-4">
+                        <h4 class="f-20 bg-price text-white p-2 mb-3  text-center">Direct Short URLs</h4>
+                        <p class="text-center my-2">Direct short URLs that are easy to remember and type. Get case-insensitive, four or more characters URLs. </p>
+                        <p class="text-center mb-3 ">Start with <strong>3u.gg/<span class="text-color" style="background-color:#b3d7fc; color:#a30132; font-size: 30px;">_ _ _ _</strong></span></strong></p>
+                        <div class="mb-3" >
+                            <table class="table table-bordered" style="color: #1e375a !important; position: relative; bottom: 5px; ">
+                                <thead class="bg-light ">
+                                    <tr>
+                                        <th scope="col">Package</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-size:14px;">
+                                    <tr>
+                                        <td>Annual</td>
+                                        <td>US$1.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5 Years</td>
+                                        <td>US$3.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="mt-30 text-center" style="position: relative; top: 8px; ">
+                                <a href="https://admin.3u.gg/auth" target="_blank"
+                                    class="btn btn-price btn-rounded center" style="transform: scale(0.8);">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="pricing-box mt-4"style="min-height: 245px;" >
+                        <h4 class="f-20 bg-price text-white p-2 mb-3  text-center">Organization Accounts</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 text-center" style="border-right: 1px solid rgba(128, 128, 128, 0.163);">
+                                <h5>Organization Prefix</h5>
+                                 <!-- organization prefix content start -->
+                                <p class="text-center my-2"> An exclusive organizational prefix to generate short URLs in your own private area.
+                                </p>
+                                <p style="position: relative; bottom: 3px;" class="text-center mt-2">Start with <strong id="myButton">3u.gg/<a ><mark class="text-color"
+                                    style="background-color:#b3d7fc; color:#a30132;">pr</mark>/<b style="font-size: 25px !important;">_ _ _ _</b></strong></a></strong>
+                                    </p>
+                                    <table class="table table-bordered" style="color: #1e375a !important; border-right: 1px solid black; position: relative; bottom: 6px;">
+                                        <thead class="bg-light ">
+                                            <tr>
+                                                <th scope="col" colspan="2" class="text-center">Exclusive Organization <br> Prefix</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="font-size:14px;">
+                                            <tr>
+                                                <td>US$9.99 per month</td>
+                                                <td><a href="terms-of-service.html" style="color:#a30132;">1,000 Short URLs</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                <!-- organization prefix content end -->
+                            </div>
+                            <div class="col-md-6 col-sm-12 text-center">
+                                <h5>Branded Shortener</h5>
+                                 <!-- Branded shortner start -->
+                                <p class="text-center my-2">
+                                   A branded organization shortener to align URLs with your corporate identity showing first.
+                                </p>
+                                <p class="text-center mt-2">Start with <strong><a id="myButton1"><mark class="text-color"
+                                    style="background-color:#b3d7fc; color:#a30132;">pr</strong></mark></a><b>.3u.gg</b></strong>
+                                    </p>
+                                
+                                    <table class="table table-bordered" style="color: #1e375a !important;">
+                                        <thead class="bg-light ">
+                                            <tr>
+                                                <th scope="col" colspan="2" class="text-center">Branded Organization Shortener</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="font-size:14px;">
+                                            <tr>
+                                                <td>US$24.99 per month</td>
+                                                <td><a href="terms-of-service.html" style="color:#a30132;">1,000 Short URLs</a>
+</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                <!-- Branded shortner end -->
+                            </div>
+                        </div>
+                        <!--  -->
+                       
+                        <div class=" pt-2 text-center" style="position: relative; bottom: 10px;">
+                            <a href="https://admin.3u.gg/auth" target="_blank" class="mt-4 btn btn-price btn-rounded center" style="transform: scale(0.8); position: relative; bottom: 4px;">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!--============= Call In Action Section Ends Here =============-->
+   
+      <!--============= Call In Action Section Ends Here =============-->
+    <section id="FAQ">
+     <div class="container">
+          <div class=" padding-top padding-bottom mt--20">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-xl-8">
+                        <div class="section-header mw-100">
+                         
+                           <h2 class="title"> 3u.gg FAQs</h2>
+                        </div>
+                    </div>
+                </div>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0 d-inline">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size:27px;">
+                      Service
+                    </button>
+                 </h5>
+               
+            </div>
+             
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="faq-wrapper">
+                <div class="card-body">
+                    <div class="card" id="child1-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOneA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Can a short URL be reused?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child1-1" id="collapseOneA">
+                            Yes. A 3u.gg short URL purchased is your long term asset. You can change the target URL as many times as you want.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card " id="child1-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOneB"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Can I test the service before paying?</span><span class="right-icon"></span></a>
+                        </div>
+                   </div>
+                        <div class="card-body collapse" data-parent="#child1-2" id="collapseOneB">
+                            You can register your preferred short URL, provided it is available, without any upfront payment. The URL will be held in your account for a specified "hold time," during which you can test it. The hold time is 24 hours for four-character short URLs and one week for URLs with five or more characters.
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="card" id="child1-3">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOneC"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What type of target URLs are supported?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child1-3" id="collapseOneC">
+                           Any URL that starts with a http or https is supported. The URL can point to HTML web pages, PDF documents and even dynamically generated content with query params like ?area=ny.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child1-4">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOneD"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Are 3u.gg short URLs case-sensitive?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child1-4" id="collapseOneD">
+                            While the URL path as per official http protocol is case-sensitive, all 3u.gg short URLs are  not. This is to make it easy for someone to type from memory. <a href="mnemonic-urls.html" style="color:#a30132;"> Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                    
+                </div>
+            </div>
+        </div>
+
+   
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size:27px;">
+                     Payment Processing
+        </button>
+      </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+               <div class="card-body">
+                    <div class="card" id="child2-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseTwoA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What types of payments do you support?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child2-1" id="collapseTwoA">
+                            For now, we only support PayPal.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="child2-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseTwoB"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Do you support short URL creating by anonymous account?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child2-2" id="collapseTwoB">
+                            No. Users need to sign in through SSO (Single Sign-on) through some other provider like Google.
+                        </div>
+                    </div>
+                </div>
+
+                 
+
+                  <div class="card" id="child2-3">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseTwoC"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Can 3u.gg short URLs be sold in a secondary market?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child2-3" id="collapseTwoC">
+                          We don't endorse this practice, but you are free to sell your valuable 3u.gg short URLs on any secondary market. Transfers to another party are only permitted after payment is completed. This policy is designed to prevent squatting and URL kiting.
+                        </div>
+                    </div>
+                </div>
+
+                  
+                </div>
+            </div>
+            </div>
+        </div>
+         <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"style="font-size:27px;">
+                     Service Technical
+        </button>
+      </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+               <div class="card-body">
+                    <div class="card" id="child3-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Do you preserve the original URL referrer while forwarding?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-1" id="collapseThreeA">
+                           Yes. The URL referrer is forwarded in an http attribute.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="child3-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeB1"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What is the best practice to not trigger behaviour tracking blockers on my short URL?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-2" id="collapseThreeB1">
+                            Do not put any query params while putting short URLs on webpages. Embed all query params while creating the short URL. <a href="campaign-and-behavior-tracking-separation.html" target="_blank" style="color:#a30132;">Read blog</a>.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-3">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeB2"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What is a typical response speed?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-3" id="collapseThreeB2">
+                            Depending on the geographical location of the client. It is usually very fast.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-4">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeC"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">If I change the target URL, how long does it take to propagate?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-4" id="collapseThreeC">
+                           In our system, the changes propagate almost instantaneously. The changes also propagate quickly through the DNS as we use the non-caching response http 302 instead of usual http 301.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-5">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeD"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Are there any dependencies on the browser type of version?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-5" id="collapseThreeD">
+                            No. 3u.gg uses standard HTTP response codes supported by all browsers.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-6">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeE"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Do you have an API that we can use for further automation?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-6" id="collapseThreeE">
+                            Yes. The API access is only granted upon request. Please contact us on support@3u.gg
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-7">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeF"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Can I point target URLs with dynamic content?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-7" id="collapseThreeF">
+                            Yes. You can. But this practice may trigger behaviour tracking URL blockers.
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="card" id="child3-8">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeG"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">If I change targets, how are the usage statistics reported?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-8" id="collapseThreeG">
+                           Usage statistics are reported separately for each target URL change.
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="card" id="child3-9">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseThreeH"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What characters can be used in a short URL?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child3-9" id="collapseThreeH">
+                            Any characters supported by HTTP protocol i.e. a-z, A-Z, 0-9. Other characters have special meanings.
+                        </div>
+                    </div>
+                </div>
+
+                  
+                </div>
+            </div>
+            </div>
+        </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"style="font-size:27px;">
+          Organization Accounts
+        </button>
+      </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+               <div class="card-body">
+                    <div class="card" id="child4-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseFourA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What is the purpose of an Organization Account?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child4-1" id="collapseFourA">
+                            This is to give all your short URLs the same smaller folder prefix or a branded starting subdomain. 
+                        </div>
+                    </div>
+                </div>
+
+             
+
+              
+
+                  <div class="card" id="child4-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseFourB"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What is the minimum length of an Organization URL prefix?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child4-2" id="collapseFourB">
+                            Branded URLs start with a single character in your branded space. For a prefix based organization, it looks like  3u.gg/<span style="background-color:#b3d7fc"><span style="color: #a30132;">pr</span></span>/_ _ _ _ and for branded organization it looks like <span style="background-color:#b3d7fc"><span style="color: #a30132;">pr</span></span>.3u.gg/_ _ _ _
+                        </div>
+                    </div>
+                </div>
+
+                  
+               
+            </div>
+            </div>
+        </div>
+         <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"style="font-size:27px;">
+          Violations
+        </button>
+      </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+               <div class="card-body">
+                    <div class="card" id="child5-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseFiveA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">I want to  report abuse from some user of 3u.gg service.</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child5-1" id="collapseFiveA">
+                           Please email us on abuse@3u.gg
+                        </div>
+                    </div>
+                </div>
+
+
+                  <div class="card" id="child5-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseFiveB"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Are there any restrictions on URL targets?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child5-2" id="collapseFiveB">
+                           Yes. Phishing, porn and other targets are banned. Please refer to our  <a href="terms-of-service.html" style="color:#a30132;">Terms of Service</a>.
+                        </div>
+                    </div>
+                </div>
+
+                  
+                </div>
+            </div>
+            </div>
+        
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"style="font-size:27px;">
+          Legal and Statutory
+        </button>
+      </h5>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+              <div class="card-body">
+                    <div class="card" id="child6-1">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseSixA"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">What is the origin of .gg TLD?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child6-1" id="collapseSixA">
+                            .gg is the official TLD of Bailiwick of Guernsey, part of British Channel Islands and follows the British Law.
+                        </div>
+                    </div>
+                </div>
+
+              
+
+                  <div class="card" id="child6-2">
+                        <div class="card-header">
+                            <div class="faq-item">
+                            <div class="faq-title">
+                            <a href="#" data-toggle="collapse" data-target="#collapseSixB"> <img src="assets/css/img/faq.png" alt="3u.gg FAQ"><span class="title">Is my data safe?</span><span class="right-icon"></span></a>
+                        </div>
+                    </a></div>
+                        <div class="card-body collapse" data-parent="#child6-2" id="collapseSixB">
+                           Yes. Please refer to our <a href="privacy-policy.html" style="color:#a30132;">Privacy Policy</a>.
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+ </div>
+</section>
+
+     
+    <div class="container mt-5 mb-50">
+        <div class="section-header mb-low">
+            <h2 class="title mb-0">Featured Blogs</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-left">
+
+                    <img src="./assets/images/blog/Non-Clickable-Media-Tracking.png" alt="Tracking on non-clickable media" class="img-fluid">
+                    <h5 class="text-dark mt-20"><a href="non-clickable-media-optimized.html" target="_blank">Advertising
+                            Campaign Tracking on non-clickable media</a></h5>
+                </div>
+                <span class="text-readmore"><a href="non-clickable-media-optimized.html" target="_blank" class="text-readmore mt-2  mb-4">Read More </a> </span>
+            </div>
+            <div class="col-md-3">
+                <div class="text-left">
+                    <img src="./assets/images/blog/campaign-tracking.png" alt="Separating campaign tracking" class="img-fluid">
+                    <h5 class="text-dark mt-20"><a href="campaign-and-behavior-tracking-separation.html" target="_blank">Separating campaign tracking from behavior tracking</a></h5>
+                </div>
+                <span class="text-readmore"><a href="campaign-and-behavior-tracking-separation.html" target="_blank" class="text-readmore mt-2  mb-4">Read More </a> </span>
+            </div>
+            <div class="col-md-3">
+                <div class="text-left">
+
+                    <img src="./assets/images/blog/corporate-messaging-and-phishing-blog-home.png" alt="hyperlink approach for versioned documents" target="_blank" class="img-fluid">
+
+                   <h5 class="text-dark mt-20"><a href="corporate-messaging-and-phishing.html" target="_blank">Corporate Messaging and Phishing Security Measures</a></h5>
+                   
+                </div>
+                <span class="text-readmore"><a target="_blank" href="corporate-messaging-and-phishing.html" class="text-readmore mt-2  mb-4">Read More </a>
+                </span>
+            </div>
+            <div class="col-md-3">
+                <div class="text-left">
+
+                    <img src="./assets/images/blog/aka-ms-microsoft.png" alt="aka.ms Microsoft" target="_blank" class="img-fluid">
+
+                   <h5 class="text-dark mt-20"><a href="aka-ms-case-study-for-microsoft.html" target="_blank">Corporate URL Strategy: aka.ms Case Study for Microsoft</a></h5>
+                   
+                </div>
+                <span class="text-readmore"><a target="_blank" href="aka-ms-case-study-for-microsoft.html" class="text-readmore mt-2  mb-4">Read More </a>
+                </span>
+            </div>
+        </div>
+    </div>
+   <!--============= Blog Section Ends Here =============-->
+
+   
+   <!--============= Footer Section Starts Here =============-->
+    <footer class="bg-body-tertiary mt-40 text-lg-start bg-light" >
+  <!-- Grid container -->
+  <div class="container p-4 ">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4 mb-md-0 ">
+         <a href="index.html" class="logo me-auto"><img src="./assets/images/logo/3u-logo-dark.png" alt="3u.gg footer logo"
+                class="img-fluid"></a>
+
+        <p class="footer mt-10 ">
+          3u.gg is a mnemonic URL shortening service for organizational and direct short URLs.
+  
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0 mt-2  ">
+        <h5 class="footer-heading">Quick Links</h5>
+        <p></p> 
+<div class="footer text-dark mt-2">
+    <ul class=" Quick-Links" style="text-decoration: none;">
+        <li><a href="blog.html" target="_blank" class="Quick-Links">Blog</a></li>
+        <li><a href="https://admin.3u.gg/auth"target="_blank" class="Quick-Links" style="color: #414785;">Login</a></li>
+        <!-- <li><a href="#Feature "class="Quick-Links" style="color: #414785;">Features</a></li> -->
+        <li><a href="#FAQ"class="Quick-Links" style="color: #414785;">FAQ</a></li>
+    </ul>
+</div>
+
+       
+      </div>
+
+      <!--Grid column-->
+      <div class=" col-lg-3 col-md-6 mb-4 mb-md-0 mt-2  ">
+        <h5 class="footer-heading">Legal</h5>
+        <p></p> 
+<div class=" footer text-dark mt-2">
+    <ul class=" Quick-Links" style="text-decoration: none;">
+        
+        <li><a href="acceptable-use-policy.html" class="Quick-Links" style="color: #414785;">Acceptable Use Policy</a></li>
+        <li><a href="privacy-policy.html" class="Quick-Links" style="color: #414785;">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html" class="Quick-Links" style="color: #414785;">Terms of Service</a></li>
+    </ul>
+</div>
+
+       
+      </div>
+
+ <div class="col-lg-3 col-md-6 mb-4 mb-md-0 mt-2">
+        <h5 class="footer-heading ">Email</h5>
+
+    <ul class="mt-2" style="font-size: 14px !important; line-height: 16px !important;">
+        <li><span class="font-weight-bold">Sales:</span> sales@3u.gg</li>
+        <li><span class="font-weight-bold">Support:</span> support@3u.gg</li>
+        <li><span class="font-weight-bold">Billing:</span> billing@3u.gg</li>
+        <li><span class="font-weight-bold">Reporting Abuse:</span> abuse@3u.gg </li>
+    </ul>
+
+        
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <section class="call-in-action bg-light ">
+  <div class="container">
+    <div class="row text-left ">
+    <div class="col-sm-12 col-xs-12 mt-4 mb-3 mb-4">
+        <div class="footer copyright">
+        <p>© Copyright <span id="currentYear"></span> | <a href="index.html">3u.gg</a> All Rights Reserved.</p>
+    </div>
+  </div>
+     
+
+</section>
+  <!-- Copyright -->
+</footer>
+    <!--============= Footer Section Ends Here =============-->
+
+
+
+    <script src="./assets/js/jquery-3.3.1.min.js"></script>
+    <script src="./assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/waypoints.js"></script>
+    <script src="./assets/js/nice-select.js"></script>
+    <script src="./assets/js/counterup.min.js"></script>
+    <script src="./assets/js/owl.min.js"></script>
+    <script src="./assets/js/magnific-popup.min.js"></script>
+    <script src="./assets/js/paroller.js"></script>
+    <script src="./assets/js/contact.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/tiny-slider.js"></script>
+    <script src="./assets/js/plugins.init.js"></script>
+
+     
+           <!-- Initialize Bootstrap tooltips -->
+   
+
+     <script src="./assets/js/imageMapResizer.min.js"></script>
+    <script>imageMapResize();</script>
+
+    <!-- Initialize Bootstrap tooltips -->
+    <script>
+        tippy('#myButton', {
+    content: 'Your organization prefix here',
+    });
+        tippy('#myButton1', {
+    content: 'Your organization prefix here',
+    });
+    </script>
+
+
+  
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Disable the button initially
+    $("#editableUrlBtn").prop('disabled', true).css({
+        "background-color": "lightgray",
+        "color": "darkgray",
+        "cursor": "not-allowed"
+    });
+
+    // Hide the status text initially
+    $("#statusText").hide();
+
+    // Valid characters: only letters and numbers
+    const validPattern = /^[a-zA-Z0-9]+$/;
+    const baseUrl = "3u.gg/"; // Define the base URL
+
+    // Function to debounce input
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    // Function to check URL availability
+   function checkAvailability() {
+        var endpoint = $("#editableUrl").val().substring(baseUrl.length); // Get the part after "3u.gg/"
+ 
+        $.ajax({
+            url: "https://admin.3u.gg:9500/urls/isavailable?url=" + encodeURIComponent(endpoint),
+            type: "GET",
+            dataType: "json",
+            beforeSend: function() {
+                $("#editableUrlBtn").prop('disabled', true).css({
+                    "background-color": "lightgray",
+                    "color": "darkgray",
+                    "cursor": "not-allowed"
+                });
+            },
+            success: function(result) {
+                if (result && result.ResParam &&  result.ResParam.payload.IsSuccess) {
+                    $("#statusText").text("Available").css("color", "green").show();
+                    $("#editableUrl").addClass("show-status");
+                    $("#editableUrlBtn").text("Grab It").prop('disabled', false).css({
+                        "background-color": "",
+                        "color": "",
+                        "cursor": "pointer"
+                    });
+                } else {
+                    $("#statusText").text("Not Available").css("color", "red").show();
+                    $("#editableUrl").addClass("show-status");
+                    $("#editableUrlBtn").text("Check Availability").prop('disabled', false).css({
+                        "background-color": "",
+                        "color": "",
+                        "cursor": "pointer"
+                    });
+                }
+            },
+            error: function() {
+                $("#statusText").text("Not Available").css("color", "red").show();
+                $("#editableUrl").addClass("show-status");
+                $("#editableUrlBtn").text("Check Availability").prop('disabled', false).css({
+                    "background-color": "",
+                    "color": "",
+                    "cursor": "pointer"
+                });
+            }
+        });
+    }
+
+    // Handle input change with debounce
+    $("#editableUrl").on("input", debounce(function() {
+        var currentValue = $(this).val().substring(baseUrl.length); // Get the part after "3u.gg/"
+
+        // Check if input contains only valid characters and is at least 4 characters long
+        if (currentValue.length >= 4 && validPattern.test(currentValue)) {
+            // Enable the button if valid and length is 4 or more
+            $("#editableUrlBtn").prop('disabled', false).text("Check Availability").css({
+                "background-color": "",
+                "color": "",
+                "cursor": "pointer"
+            });
+        } else {
+            // Disable the button if invalid characters are found or length is less than 4
+            $("#editableUrlBtn").prop('disabled', true).text("Check Availability").css({
+                "background-color": "lightgray",
+                "color": "darkgray",
+                "cursor": "not-allowed"
+            });
+        }
+    }, 100)); // Debounce with 100ms delay
+
+    // Prevent typing or placing cursor in "3u.gg/"
+    $("#editableUrl").on("keydown", function(event) {
+        var baseUrlLength = baseUrl.length;
+        var selectionStart = $(this).get(0).selectionStart;
+        var selectionEnd = $(this).get(0).selectionEnd;
+
+        // If the user selects the whole input field and presses delete or backspace, reset to "3u.gg/"
+        if ((event.key === "Backspace" || event.key === "Delete") && selectionStart === 0 && selectionEnd >= baseUrlLength) {
+            event.preventDefault();
+            $(this).val(baseUrl);
+            return;
+        }
+
+         // If the user selects the whole input field and presses delete or backspace, reset to "3u.gg/"
+        if ((event.key === "Backspace" || event.key === "Delete") && selectionStart === 8 && selectionEnd >= baseUrlLength) {
+            event.preventDefault();
+            $(this).val(baseUrl);
+            return;
+        }
+
+        // Prevent deleting or typing in the "3u.gg/" part
+        if (selectionStart < baseUrlLength) {
+            event.preventDefault();
+        }
+
+        // Allow backspace after "3u.gg/"
+        if (event.keyCode === 8 && selectionStart <= baseUrlLength) {
+            event.preventDefault();
+        }
+    });
+
+    // For mobile: Monitor input and backspace behavior
+    $("#editableUrl").on("input", function() {
+        var currentValue = $(this).val();
+
+        // If the current value is shorter than the base URL, reset it to "3u.gg/"
+        if (currentValue.indexOf(baseUrl) !== 0) {
+            $(this).val(baseUrl);
+        }
+        
+        // Prevent cursor from moving into "3u.gg/" on mobile
+        var selectionStart = $(this).get(0).selectionStart;
+        if (selectionStart < baseUrl.length) {
+            $(this).get(0).setSelectionRange(baseUrl.length, baseUrl.length);
+        }
+    });
+
+    // Prevent cursor from being placed in "3u.gg/" when clicked
+    $("#editableUrl").on("click", function() {
+        var baseUrlLength = baseUrl.length;
+
+        // Set cursor position at the end of "3u.gg/" if it's clicked within it
+        if ($(this).get(0).selectionStart < baseUrlLength) {
+            $(this).get(0).setSelectionRange(baseUrlLength, baseUrlLength);
+        }
+
+        // Hide the status text when the input field is clicked
+        $("#statusText").hide();
+        $("#editableUrl").removeClass("show-status");
+    });
+
+    // Handle button click for URL availability or grabbing the URL
+    $("#editableUrlBtn").click(function() {
+        var buttonText = $(this).text();
+
+        if (buttonText === "Grab It") {
+            var endpoint = $("#editableUrl").val().substring(baseUrl.length); // Get the part after "3u.gg/"
+            window.open("https://admin.3u.gg/auth?url=" + encodeURIComponent(endpoint), '_blank');
+        } else {
+            checkAvailability();
+        }
+    });
+});
+
+
+</script>
+
+
+
+
+ <script>
+
+        // Initialize Tippy.js with your desired options
+
+        // JavaScript
+        // Initialize Tippy.js with your desired options
+        const myButton = document.getElementById('myButton');
+        const myButton1 = document.getElementById('myButton1');
+
+        
+    </script>
+
+
+
+<script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
+<!-- Google tag (gtag.js) --> <script async src="
+https://www.googletagmanager.com/gtag/js?id=G-WF7MK0BZHC"></script>
+<script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-WF7MK0BZHC'); </script>
+
+        <script type="text/javascript">
+    (function(c, l, a, r, i, t, y) {
+        c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "oeuxbif4cl");
+</script>
+
+</body>
+
+</html>
